@@ -369,7 +369,13 @@ header:hover::after {
 }
 
 
-/* --- 5. Responsive Adjustments --- */
+/* // --- 5. Responsive Adjustments --- 
+// Commenting out the entire responsive section to prevent the design from changing on mobile.
+// WARNING: This will cause horizontal scrolling on mobile and the design will be very small.
+// To force the mobile browser to display the desktop width, you MUST add the following
+// meta tag to your HTML: <meta name="viewport" content="width=1200px">
+*/
+/*
 @media (max-width: 992px) {
     .info-row {
         flex-direction: column;
@@ -378,7 +384,7 @@ header:hover::after {
 
     .methodology-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        /* Adjust for smaller screens */
+        // Adjust for smaller screens
         gap: 20px;
     }
 }
@@ -427,6 +433,7 @@ header:hover::after {
         font-size: 14px;
     }
 }
+*/
 
 /* --- Table Styling for Professional Look --- */
 .card .data-table {
