@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Dashboard – Salary & Attrition Insights</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+
+    <div id="container">
+        <header>HR Dashboard – Salary & Attrition Insights</header>
+
+        <div class="info-row">
+            <div class="card" id="student-information">
+                <h3>Student Information</h3>
+                <hr>
+                <p><strong>Name:</strong> Misbha Rauf Sayyed</p>
+                <p><strong>Roll No:</strong> 3647</p>
+                <p><strong>Enrollment No:</strong> 23212830522</p>
+                <p><strong>Course:</strong> Information Technology 5th Semester</p>
+                <p><strong>Subject:</strong> Data Analytics 315326</p>
+            </div>
+
+            <div class="card" id="college-information">
+                <h3>College Information</h3>
+                <hr>
+                <p><strong>College Name:</strong> Shri Siddheshwar Women's Polytechnic</p>
+                <p><strong>Principal:</strong> Prof. Gajanan Dharane</p>
+                <p><strong>HOD:</strong> Dr. Neeta Alange</p>
+                <p><strong>Lecturer:</strong> Mr. Akash Chatake</p>
+                <p><strong>Date of Submission:</strong> </p>
+            </div>
+        </div>
+
+        <div class="card" id="project-information">
+            <h2>1. Introduction & Project Overview</h2>
+            <h3>1.1 Project Objectives</h3>
+            <p>This dashboard presents key insights into employee salary distribution and attrition rates across
+                different departments and locations. The goal is to provide a clear, interactive visualization that
+                supports data-driven decision-making for HR management.</p>
+        </div>
+
+        <div class="card" id="data-description">
+            <h2>2. Data Description</h2>
+            <h3>2.1 Data Overview</h3>
+            <p>The dataset comprises employee records from multiple departments and locations. It includes details such
+                as salaries, attrition status, and work locations. This structure enables the analysis of salary
+                distribution, attrition trends, and department/location-wise workforce patterns.
+            </p>
+
+            <h3>2.2 Data Fields</h3>
+            <p><strong>ID:</strong> Unique employee identifier.</p>
+            <p><strong>Department:</strong> The functional area of the employee (HR, Sales, IT, Finance).</p>
+            <p><strong>Salary:</strong> The employee's annual salary.</p>
+            <p><strong>Attrition Status:</strong> Indicates if the employee left the company (Yes/No).</p>
+            <p><strong>Location:</strong> The city of posting (Mumbai, Pune, Delhi).</p>
+
+            <h3>2.3 Analysis Dimensions</h3>
+            <p>The dataset allows analysis across different dimensions such as:</p>
+            <ul>
+                <li>Department-wise salary and attrition patterns
+                </li>
+                <li>Location-based workforce insights
+                </li>
+                <li> Overall attrition trends across the organization
+                </li>
+            </ul>
+
+            <h3>2.4 Data Quality and Sources</h3>
+            <p>The dataset is well-structured, complete, and suitable for HR analytics. It provides reliable insights
+                for salary comparison, attrition monitoring, and workforce planning at a macro level.</p>
+        </div>
+
+
+
+
+        <div class="card" id="data-analysis">
+            <h2>3. Data Analysis and Key Findings</h2>
+
+            <h3>3.1 Interactive Dashboard</h3>
+            <p>The dashboard features interactive slicers for filtering data by Department and Location. Users can
+                select specific departments or locations to dynamically update the visualizations and raw data table
+                below.</p>
+            <div class="slicer-container">
+                <div class="slicer">
+                    <h4>Department</h4>
+                    <div class="slicer-buttons" id="departmentSlicer">
+                        <button data-filter-value="All" class="active">All</button>
+                        <button data-filter-value="Finance">Finance</button>
+                        <button data-filter-value="HR">HR</button>
+                        <button data-filter-value="IT">IT</button>
+                        <button data-filter-value="Sales">Sales</button>
+                    </div>
+                </div>
+
+                <div class="slicer">
+                    <h4>Location</h4>
+                    <div class="slicer-buttons" id="locationSlicer">
+                        <button data-filter-value="All" class="active">All</button>
+                        <button data-filter-value="Delhi">Delhi</button>
+                        <button data-filter-value="Mumbai">Mumbai</button>
+                        <button data-filter-value="Pune">Pune</button>
+                    </div>
+                </div>
+            </div>
+
+            <h3>3.2 Raw Data Table</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Department</th>
+                        <th>Salary</th>
+                        <th>Attrition Status</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Sales</td>
+                        <td>78933</td>
+                        <td>Yes</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>HR</td>
+                        <td>69078</td>
+                        <td>No</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>HR</td>
+                        <td>60783</td>
+                        <td>No</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Sales</td>
+                        <td>55781</td>
+                        <td>Yes</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Sales</td>
+                        <td>51512</td>
+                        <td>No</td>
+                        <td>Pune</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>IT</td>
+                        <td>71799</td>
+                        <td>Yes</td>
+                        <td>Delhi</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>IT</td>
+                        <td>63034</td>
+                        <td>Yes</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Finance</td>
+                        <td>33004</td>
+                        <td>Yes</td>
+                        <td>Pune</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Sales</td>
+                        <td>47709</td>
+                        <td>Yes</td>
+                        <td>Delhi</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Finance</td>
+                        <td>74067</td>
+                        <td>No</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Sales</td>
+                        <td>54035</td>
+                        <td>No</td>
+                        <td>Pune</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>IT</td>
+                        <td>43203</td>
+                        <td>No</td>
+                        <td>Delhi</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>IT</td>
+                        <td>43746</td>
+                        <td>Yes</td>
+                        <td>Pune</td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>Sales</td>
+                        <td>70502</td>
+                        <td>Yes</td>
+                        <td>Pune</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>HR</td>
+                        <td>49881</td>
+                        <td>Yes</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>Finance</td>
+                        <td>43380</td>
+                        <td>Yes</td>
+                        <td>Delhi</td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>Finance</td>
+                        <td>65643</td>
+                        <td>No</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>Finance</td>
+                        <td>75240</td>
+                        <td>Yes</td>
+                        <td>Pune</td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>Finance</td>
+                        <td>62735</td>
+                        <td>No</td>
+                        <td>Pune</td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>HR</td>
+                        <td>40011</td>
+                        <td>Yes</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td>Finance</td>
+                        <td>70238</td>
+                        <td>No</td>
+                        <td>Delhi</td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td>Sales</td>
+                        <td>30322</td>
+                        <td>Yes</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td>Finance</td>
+                        <td>79384</td>
+                        <td>No</td>
+                        <td>Delhi</td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>Finance</td>
+                        <td>36304</td>
+                        <td>Yes</td>
+                        <td>Delhi</td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>Sales</td>
+                        <td>59048</td>
+                        <td>No</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td>IT</td>
+                        <td>39205</td>
+                        <td>Yes</td>
+                        <td>Delhi</td>
+                    </tr>
+                    <tr>
+                        <td>27</td>
+                        <td>Finance</td>
+                        <td>41167</td>
+                        <td>Yes</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>28</td>
+                        <td>HR</td>
+                        <td>49987</td>
+                        <td>No</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>29</td>
+                        <td>Sales</td>
+                        <td>45009</td>
+                        <td>No</td>
+                        <td>Pune</td>
+                    </tr>
+                    <tr>
+                        <td>30</td>
+                        <td>HR</td>
+                        <td>35739</td>
+                        <td>Yes</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>31</td>
+                        <td>Finance</td>
+                        <td>56429</td>
+                        <td>No</td>
+                        <td>Delhi</td>
+                    </tr>
+                    <tr>
+                        <td>32</td>
+                        <td>IT</td>
+                        <td>62283</td>
+                        <td>Yes</td>
+                        <td>Delhi</td>
+                    </tr>
+                    <tr>
+                        <td>33</td>
+                        <td>Finance</td>
+                        <td>47941</td>
+                        <td>Yes</td>
+                        <td>Pune</td>
+                    </tr>
+                    <tr>
+                        <td>34</td>
+                        <td>Sales</td>
+                        <td>37967</td>
+                        <td>No</td>
+                        <td>Pune</td>
+                    </tr>
+                    <tr>
+                        <td>35</td>
+                        <td>Sales</td>
+                        <td>47082</td>
+                        <td>No</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>36</td>
+                        <td>Finance</td>
+                        <td>36812</td>
+                        <td>No</td>
+                        <td>Pune</td>
+                    </tr>
+                    <tr>
+                        <td>37</td>
+                        <td>Finance</td>
+                        <td>62781</td>
+                        <td>Yes</td>
+                        <td>Delhi</td>
+                    </tr>
+                    <tr>
+                        <td>38</td>
+                        <td>IT</td>
+                        <td>56239</td>
+                        <td>No</td>
+                        <td>Pune</td>
+                    </tr>
+                    <tr>
+                        <td>39</td>
+                        <td>HR</td>
+                        <td>50824</td>
+                        <td>No</td>
+                        <td>Delhi</td>
+                    </tr>
+                    <tr>
+                        <td>40</td>
+                        <td>IT</td>
+                        <td>47927</td>
+                        <td>No</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>41</td>
+                        <td>Finance</td>
+                        <td>47867</td>
+                        <td>No</td>
+                        <td>Pune</td>
+                    </tr>
+                    <tr>
+                        <td>42</td>
+                        <td>Finance</td>
+                        <td>76339</td>
+                        <td>No</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>43</td>
+                        <td>Finance</td>
+                        <td>44848</td>
+                        <td>Yes</td>
+                        <td>Pune</td>
+                    </tr>
+                    <tr>
+                        <td>44</td>
+                        <td>Finance</td>
+                        <td>78287</td>
+                        <td>No</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>45</td>
+                        <td>Sales</td>
+                        <td>62534</td>
+                        <td>No</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>46</td>
+                        <td>Sales</td>
+                        <td>72497</td>
+                        <td>Yes</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>47</td>
+                        <td>Sales</td>
+                        <td>69715</td>
+                        <td>No</td>
+                        <td>Delhi</td>
+                    </tr>
+                    <tr>
+                        <td>48</td>
+                        <td>Finance</td>
+                        <td>50978</td>
+                        <td>Yes</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>49</td>
+                        <td>HR</td>
+                        <td>75828</td>
+                        <td>No</td>
+                        <td>Mumbai</td>
+                    </tr>
+                    <tr>
+                        <td>50</td>
+                        <td>HR</td>
+                        <td>54632</td>
+                        <td>No</td>
+                        <td>Delhi</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>3.2 Visualization Gallery</h3>
+            <div style="display: flex; gap: 30px; justify-content: space-between;">
+                <div style="width: 45%;">
+                    <h4>Attrition Rate by Department</h4>
+                    <canvas id="attritionChart"></canvas>
+                </div>
+                <div style="width: 45%;">
+                    <h4>Average Salary by Department</h4>
+                    <canvas id="salaryChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card" id="methodology">
+            <h2>4. Methodology</h2>
+
+            <div class="methodology-grid">
+                <div class="method-card">
+                    <h3>1. Analytical Approach</h3>
+                    <p>The project uses a comparative analysis, examining average salaries and attrition rates across
+                        departments and locations to identify trends and key insights.</p>
+                </div>
+                <div class="method-card">
+                    <h3>2. Data Collection & Validation</h3>
+                    <p>Employee data was sourced from internal HR records and validated for completeness and consistency
+                        across all fields (Salary, Department, Attrition Status, Location).</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>3. Trend Analysis</h3>
+                    <p>Pivot tables and charts were used to analyze salary distribution and attrition patterns,
+                        highlighting
+                        variations across departments and cities.</p>
+                </div>
+
+                <div class="method-card">
+                    <h3>4. Visualization Creation</h3>
+                    <p>Charts were chosen based on the type of insight:
+                    <ul>
+                        <li>Bar Charts for department-wise salary comparison</li>
+                        <li>Pie Charts for attrition proportion</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div class="method-card">
+                    <h3>5. Narrative Development</h3>
+                    <p>The dashboard is structured to guide users from general workforce patterns to specific insights,
+                        e.g., high-attrition departments or locations with salary disparities.</p>
+                </div>
+
+            </div>
+            <h3>4.1 Tools and Technologies Used</h3>
+            <ol>
+                <li>
+                    <strong>Microsoft Excel:</strong> For data organization, pivot table creation, and charting.
+                </li>
+                <li>
+                    <strong>Excel Pivot Tables:</strong> To summarize and analyze data dynamically.
+                </li>
+                <li>
+                    <strong>Excel Charts:</strong> For visual representation of data trends and comparisons.
+                </li>
+                <li><strong>Data Analysis Techniques:</strong> Comparative metrics, averages, and percentage
+                    calculations.
+                </li>
+                <li><strong>Dashboard Design Principles:</strong> User-friendly layout, clear labeling, and interactive
+                    elements (slicers).
+                </li>
+
+            </ol>
+        </div>
+
+        <div class="card" id="conclusion">
+            <h2>5. Conclusion and Key Insights</h2>
+            <p>The project demonstrates that salary and attrition trends vary significantly across departments and
+                locations. By applying data storytelling, HR managers can quickly identify:
+            </p>
+            <ul>
+                <li>Departments with higher attrition rates that may need targeted retention strategies.</li>
+                <li>Locations where salary adjustments could improve employee satisfaction and reduce turnover.</li>
+                <li>Overall workforce patterns that inform strategic HR planning and decision-making.</li>
+            </ul>
+        </div>
+
+        <div class="card" id="implications">
+            <h2>6. Implications for the Project & Learning Outcomes</h2>
+            <p>This project reinforces skills in the data lifecycle: sourcing, validating, analyzing, visualizing, and
+                narrating HR data. The key learning outcome is the ability to create interactive dashboards that clearly
+                communicate analytical findings to support HR decision-making.</p>
+        </div>
+
+        <div class="card" id="references">
+            <h2>7. References</h2>
+            <ul>
+                <li>Internal HR employee data (Salary, Department, Attrition, Location)
+                </li>
+                <li>Microsoft Excel documentation and tutorials
+                </li>
+                <li>Methodology Reference: Storytelling with Data by Cole Nussbaumer Knaflic
+                </li>
+            </ul>
+        </div>
+        <footer>© 2024 Misbha Rauf Sayyed. All rights reserved.</footer>
+    </div>
+
+    <script>
+        // Global variables to store chart instances and raw data
+        let attritionChart, salaryChart;
+        let allEmployeeData = [];
+        let currentFilters = { department: 'All', location: 'All' };
+
+        // --- A. DATA EXTRACTION (Runs once on load) ---
+        function extractData() {
+            const dataTable = document.querySelector('.data-table');
+            if (!dataTable) return;
+
+            const rows = dataTable.querySelectorAll('tbody tr');
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                if (cells.length === 5) {
+                    allEmployeeData.push({
+                        department: cells[1].textContent,
+                        salary: parseFloat(cells[2].textContent),
+                        attrition: cells[3].textContent === 'Yes' ? 1 : 0,
+                        location: cells[4].textContent
+                    });
+                    // Store the raw table row element for filtering visibility later
+                    row.dataset.department = cells[1].textContent;
+                    row.dataset.location = cells[4].textContent;
+                }
+            });
+        }
+
+        // --- B. CORE FILTERING AND AGGREGATION ---
+        function filterAndAggregateData(filters) {
+            // 1. Filter the data based on current slicer selections
+            const filteredData = allEmployeeData.filter(emp => {
+                const deptMatch = filters.department === 'All' || emp.department === filters.department;
+                const locMatch = filters.location === 'All' || emp.location === filters.location;
+                return deptMatch && locMatch;
+            });
+
+            // 2. Aggregate the filtered data
+            const aggregatedData = filteredData.reduce((acc, emp) => {
+                const dept = emp.department;
+
+                if (!acc[dept]) {
+                    acc[dept] = { totalEmployees: 0, totalSalary: 0, attritionCount: 0 };
+                }
+
+                acc[dept].totalEmployees += 1;
+                acc[dept].totalSalary += emp.salary;
+                acc[dept].attritionCount += emp.attrition;
+
+                return acc;
+            }, {});
+
+            // 3. Finalize calculations and prepare for Chart.js
+            const chartLabels = Object.keys(aggregatedData);
+            const avgSalaries = [];
+            const attritionRates = [];
+
+            chartLabels.forEach(dept => {
+                const data = aggregatedData[dept];
+                avgSalaries.push((data.totalSalary / data.totalEmployees).toFixed(0));
+                attritionRates.push(((data.attritionCount / data.totalEmployees) * 100).toFixed(1));
+            });
+
+            return { chartLabels, avgSalaries, attritionRates };
+        }
+
+        // --- C. CHART RENDERING/UPDATING ---
+        function updateCharts(data) {
+            const { chartLabels, avgSalaries, attritionRates } = data;
+            const primaryColor = '#004d99';
+            const accentColor = '#00a2ff';
+
+            // 1. Initialize or Update Attrition Chart
+            if (!attritionChart) {
+                const attritionCtx = document.getElementById('attritionChart');
+                attritionChart = new Chart(attritionCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: chartLabels,
+                        datasets: [{
+                            label: 'Attrition Rate (%)',
+                            data: attritionRates,
+                            backgroundColor: accentColor,
+                            borderColor: primaryColor,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: { y: { beginAtZero: true, title: { display: true, text: 'Attrition Rate (%)' } } },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            } else {
+                attritionChart.data.labels = chartLabels;
+                attritionChart.data.datasets[0].data = attritionRates;
+                attritionChart.update();
+            }
+
+            // 2. Initialize or Update Salary Chart
+            if (!salaryChart) {
+                const salaryCtx = document.getElementById('salaryChart');
+                salaryChart = new Chart(salaryCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: chartLabels,
+                        datasets: [{
+                            label: 'Average Salary',
+                            data: avgSalaries,
+                            backgroundColor: ['#004d99', '#007bff', '#00a2ff', '#4dc9ff'],
+                            hoverOffset: 10
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { position: 'bottom', labels: { usePointStyle: true, font: { size: 14 } } },
+                            tooltip: {
+                                callbacks: {
+                                    label: (context) => {
+                                        let label = context.label || '';
+                                        label += ': ' + new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(context.parsed);
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            } else {
+                salaryChart.data.labels = chartLabels;
+                salaryChart.data.datasets[0].data = avgSalaries;
+                salaryChart.update();
+            }
+        }
+
+        // --- D. TABLE ROW VISIBILITY UPDATE ---
+        function updateTableVisibility(filters) {
+            const rows = document.querySelectorAll('.data-table tbody tr');
+            rows.forEach(row => {
+                const deptMatch = filters.department === 'All' || row.dataset.department === filters.department;
+                const locMatch = filters.location === 'All' || row.dataset.location === filters.location;
+
+                // Hide or show the row
+                row.style.display = (deptMatch && locMatch) ? '' : 'none';
+            });
+        }
+
+        // --- E. SLICER EVENT HANDLER ---
+        function setupSlicers() {
+            const slicerContainers = document.querySelectorAll('.slicer-buttons');
+
+            slicerContainers.forEach(container => {
+                container.addEventListener('click', (event) => {
+                    const button = event.target.closest('button');
+                    if (!button) return;
+
+                    // 1. Update active state visually
+                    container.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    // 2. Determine which filter type to update
+                    const filterType = container.id.replace('Slicer', '').toLowerCase();
+
+                    // 3. Update the global filter object
+                    currentFilters[filterType] = button.dataset.filterValue;
+
+                    // 4. Run the main update function
+                    runDashboardUpdate();
+                });
+            });
+        }
+
+        // --- F. MAIN DASHBOARD RENDER FUNCTION ---
+        function runDashboardUpdate() {
+            // 1. Filter and Aggregate data
+            const dataForCharts = filterAndAggregateData(currentFilters);
+
+            // 2. Update Charts
+            updateCharts(dataForCharts);
+
+            // 3. Update Table Row Visibility (for "slicer" effect on the raw data)
+            updateTableVisibility(currentFilters);
+        }
+
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', function () {
+            extractData(); // Get data from the HTML table
+            setupSlicers(); // Set up button click listeners
+            runDashboardUpdate(); // Initial render of charts and table
+        });
+    </script>
+
+</body>
+
+</html>

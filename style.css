@@ -1,0 +1,545 @@
+/* Import a modern font: 'Inter' is a great, professional alternative to 'Poppins' */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* --- 1. Global & Reset Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    /* Using Inter font */
+}
+
+body {
+    background-color: #f8f9fa;
+    /* Lighter, more neutral background */
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #343a40;
+    /* Default text color */
+}
+
+/* --- 2. Container & Header --- */
+#container {
+    width: 90%;
+    max-width: 1200px;
+    /* Increase max width for a dashboard feel */
+}
+
+header {
+    /* Use a modern, deep navy blue */
+    color: #004d99;
+    font-size: 34px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: -0.5px;
+    /* Subtle tightening of letters */
+    border-bottom: 4px solid #00a2ff;
+    padding-bottom: 10px;
+    position: relative;
+    /* Needed for pseudo-element animation */
+    overflow: hidden;
+    /* Hide overflowing pseudo-element */
+}
+
+/* Header hover effect - subtle line animation */
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    /* Start off-screen to the left */
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, transparent, #004d99, #00a2ff);
+    /* Gradient effect */
+    transition: left 0.7s ease-in-out;
+    /* Slower, smoother animation */
+}
+
+header:hover::after {
+    left: 0;
+    /* Slide in from left */
+}
+
+/* --- 3. Card Styles --- */
+.card {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    /* Slightly more horizontal padding */
+    margin-bottom: 30px;
+    border-radius: 12px;
+    /* Smoother corner radius */
+    /* Modern, more pronounced shadow for 'floating' effect */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Smooth cubic-bezier transition */
+}
+
+.card:hover {
+    /* More pronounced hover effect for interactivity/focus */
+    transform: translateY(-8px);
+    /* Lift further */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    /* Deeper shadow */
+}
+
+
+/* Info Row for Student/College */
+.info-row {
+    display: flex;
+    gap: 30px;
+    /* Space between the two cards */
+    margin-bottom: 30px;
+}
+
+.info-row .card {
+    flex: 1;
+    /* Makes both cards take equal width */
+    margin-bottom: 0;
+    /* Remove bottom margin from card within the row */
+}
+
+
+/* --- 4. Typography & Elements --- */
+
+/* Primary Section Headings (2.) */
+.card h2 {
+    color: #004d99;
+    /* Deep navy primary color */
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    border-left: 5px solid #00a2ff;
+    padding-left: 15px;
+    padding-bottom: 0;
+    border-bottom: none;
+    transition: border-left-color 0.3s ease;
+    /* Smooth transition for border color */
+}
+
+.card h2:hover {
+    border-left-color: #007bff;
+    /* Slight change on hover */
+}
+
+/* Secondary Sub-Headings (1.1, 2.1) */
+.card h3 {
+    color: #343a40;
+    /* Darker grey for content focus */
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    /* More space above sub-sections */
+}
+
+/* Horizontal line under h3 - only keep for the student/college info */
+#student-information hr,
+#college-information hr {
+    border: 0;
+    height: 3px;
+    background: #00a2ff;
+    /* Accent color */
+    margin-bottom: 20px;
+    width: 60px;
+    border-radius: 2px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+#student-information hr:hover,
+#college-information hr:hover {
+    width: 80px;
+    /* Expand on hover */
+    background-color: #007bff;
+    /* Darker accent */
+}
+
+/* Paragraph style */
+.card p {
+    font-size: 16px;
+    color: #555;
+    margin: 15px 0;
+    /* Increased vertical margin for better flow */
+    line-height: 1.8;
+    /* Increased line-height for readability */
+}
+
+/* Strong text (labels) */
+.card p strong {
+    color: #343a40;
+    /* Match h3 color for strong labels */
+    font-weight: 600;
+    min-width: 150px;
+    /* Align labels */
+    display: inline-block;
+}
+
+/* Lists inside cards */
+.card ul,
+.card ol {
+    margin: 15px 0 15px 30px;
+}
+
+.card ul li,
+.card ol li {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+    line-height: 1.7;
+    position: relative;
+    /* For pseudo-elements */
+    padding-left: 10px;
+    /* Space for custom bullet/icon */
+    transition: color 0.3s ease, transform 0.2s ease;
+    /* Smooth text color and subtle lift */
+}
+
+.card ul li:hover {
+    color: #004d99;
+    /* Highlight text on hover */
+    transform: translateX(5px);
+    /* Gentle slide effect */
+}
+
+.card ol li:hover {
+    color: #004d99;
+    transform: translateX(5px);
+}
+
+/* Custom bullet for unordered lists */
+.card ul li::before {
+    color: #00a2ff;
+    /* Accent color for bullet */
+    position: absolute;
+    left: -5px;
+    font-size: 1.2em;
+    line-height: 1;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.card ul li:hover::before {
+    color: #004d99;
+    /* Change bullet color on hover */
+    transform: scale(1.2);
+    /* Make bullet slightly larger */
+}
+
+
+/* Methodology List - Bold the title */
+#methodology ol li strong {
+    color: #004d99;
+    font-weight: 700;
+}
+
+/* --- Methodology Grid (Card Refinement) --- */
+.methodology-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Slightly wider min width */
+    gap: 30px;
+    /* Increased gap */
+    margin-top: 30px;
+}
+
+.method-card {
+    background-color: #ffffff;
+    padding: 25px 30px;
+    /* Slightly more padding */
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    /* Softer initial shadow */
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s ease;
+    border: 1px solid transparent;
+    /* Add a subtle border for later accent */
+    position: relative;
+    overflow: hidden;
+    /* For pseudo-element glow */
+}
+
+/* Methodology card specific hover */
+.method-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    /* Lift and slightly expand */
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+    /* Deeper, wider shadow */
+    border-color: #00a2ff;
+    /* Highlight border with accent color */
+}
+
+/* Pseudo-element for a subtle accent "glow" on methodology cards */
+.method-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    /* Thin accent line at the top */
+    background: #00a2ff;
+    transform: translateX(-100%);
+    /* Start off-screen left */
+    transition: transform 0.4s ease-out;
+}
+
+.method-card:hover::before {
+    transform: translateX(0%);
+    /* Slide in from left on hover */
+}
+
+
+.method-card h3 {
+    color: #004d99;
+    /* Primary color for method titles */
+    font-size: 19px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.method-card p {
+    font-size: 15px;
+    color: #666;
+    /* Slightly darker text for contrast */
+    line-height: 1.7;
+}
+
+/* Tools and Technologies Used List - Adding subtle icons */
+#methodology ol li {
+    padding-left: 35px;
+    /* More space for icon */
+    position: relative;
+}
+
+#methodology ol li::before {
+    content: '';
+    /* We'll use background-image for actual icons */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#methodology ol li:hover::before {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Specific icons for tools - You might need to provide these as actual SVGs or font-awesome if possible */
+#methodology ol li:nth-child(1)::before {
+    /* Excel Icon */
+    content: '📊';
+    /* Placeholder for Excel */
+    font-size: 1.2em;
+}
+
+#methodology ol li:nth-child(2)::before {
+    /* Pivot Table Icon */
+    content: '📈';
+    /* Placeholder for Pivot Tables */
+    font-size: 1.2em;
+}
+
+#methodology ol li:nth-child(3)::before {
+    /* Chart Icon */
+    content: '📉';
+    /* Placeholder for Charts */
+    font-size: 1.2em;
+}
+
+#methodology ol li:nth-child(4)::before {
+    /* Analysis Icon */
+    content: '🔍';
+    /* Placeholder for Data Analysis */
+    font-size: 1.2em;
+}
+
+#methodology ol li:nth-child(5)::before {
+    /* Dashboard Icon */
+    content: '🖥️';
+    /* Placeholder for Dashboard Design */
+    font-size: 1.2em;
+}
+
+
+/* --- 5. Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .info-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .methodology-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        /* Adjust for smaller screens */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    #container {
+        width: 95%;
+        padding: 0;
+    }
+
+    header {
+        font-size: 28px;
+    }
+
+    .card {
+        padding: 25px 30px;
+    }
+
+    .card h2 {
+        font-size: 24px;
+        padding-left: 10px;
+    }
+
+    .card h3 {
+        font-size: 18px;
+    }
+
+    .card p,
+    .card li {
+        font-size: 15px;
+    }
+
+    .methodology-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .methodology h2 {
+        font-size: 24px;
+    }
+
+    .method-card h3 {
+        font-size: 16px;
+    }
+
+    .method-card p {
+        font-size: 14px;
+    }
+}
+
+/* --- Table Styling for Professional Look --- */
+.card .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Removes double borders */
+    margin-top: 20px;
+    font-size: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    /* Subtle table shadow */
+    border-radius: 8px;
+    /* Match card radius */
+    overflow: hidden;
+    /* Ensures rounded corners clip table content */
+}
+
+.card .data-table th,
+.card .data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+    /* Light divider lines */
+}
+
+.card .data-table th {
+    background-color: #f1f7ff;
+    /* Very light blue background for headers */
+    color: #004d99;
+    /* Primary navy blue color */
+    font-weight: 600;
+    border-top: 3px solid #00a2ff;
+    /* Accent line at the top */
+}
+
+/* Enhanced Hover Effect for Table Rows (tr) */
+.card .data-table tr:hover {
+    background-color: #e6f7ff;
+    /* A clean, light blue that stands out */
+
+    transform: translateX(3px);
+
+    /* 3. Smooth transition for both properties */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+
+    /* 4. Ensure the cursor changes to suggest interaction */
+    cursor: pointer;
+}
+
+/* Optional: Keep the text color dark when hovering for readability */
+.card .data-table tr:hover td {
+    color: #343a40;
+}
+
+/* --- 6. SLICER (Filter) STYLING --- */
+.slicer-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.slicer {
+    flex: 1;
+    background-color: #f1f7ff;
+    /* Light accent background for slicers */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.slicer h4 {
+    color: #004d99;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    border-bottom: 2px solid #00a2ff;
+    padding-bottom: 5px;
+}
+
+.slicer-buttons button {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #344759;
+    font-size: 15px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.25s ease-out;
+    /* Slightly longer, smoother transition */
+}
+
+/* ENHANCED SLICER BUTTON HOVER EFFECT: Clear visual change and slight shift */
+.slicer-buttons button:hover:not(.active) {
+    background-color: #e6f7ff;
+    /* A clean, very light blue background */
+    border-color: #00a2ff;
+    /* Highlight border with accent color */
+    transform: translateX(5px);
+    /* Clear horizontal shift */
+    box-shadow: 0 4px 10px rgba(0, 162, 255, 0.1);
+    /* Subtle blue glow on hover */
+    color: #004d99;
+    /* Darken text slightly for focus */
+}
+
+.slicer-buttons button.active {
+    background-color: #00a2ff;
+    /* Stronger accent color for selected */
+    color: #ffffff;
+    font-weight: 700;
+    border-color: #00a2ff;
+    box-shadow: 0 4px 10px rgba(0, 162, 255, 0.3);
+}
